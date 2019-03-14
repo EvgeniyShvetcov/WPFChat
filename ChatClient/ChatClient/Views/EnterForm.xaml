@@ -1,0 +1,51 @@
+﻿<Window x:Class="ChatClient.Views.EnterForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatClient.Views"
+        mc:Ignorable="d"
+        Title="EnterForm" 
+        Icon="/Assets/EnterIcon.png"
+        Height="400" 
+        Width="350" FontSize="15" WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" WindowStyle="None"
+        MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Border BorderBrush="White" BorderThickness="3" CornerRadius="30"
+                    TextBlock.Foreground="White">
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" RecognizesAccessKey="True"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Rectangle Height="200" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5, 1" StartPoint="0.5, 0">
+                    <GradientStop Color="#FF2281D1"/>
+                    <GradientStop Color="#FF34268A" Offset="1"/>
+                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Button x:Name="CloseButton" Width="25" Height="25" FontSize="13" Content="X" Template="{StaticResource ButtonTemplate}" Click="CloseButton_Click"/>
+        </StackPanel>
+        <Rectangle Width="280" Height="250" Fill="White" VerticalAlignment="Bottom" Margin="0, 75" RadiusY="20" RadiusX="20">
+        <Rectangle.Effect>
+            <DropShadowEffect Color="#FFB4B4B4" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
+        </Rectangle.Effect>
+        </Rectangle>
+        <Grid Width="280" Height="250" VerticalAlignment="Bottom" Margin="0, 75">
+            <TextBlock Text="ENTER" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" FontSize="25"/>
+            <StackPanel VerticalAlignment="Center" Margin="20, 50, 20, 20">
+                <TextBlock Text="ConnectionPath" FontSize="20" Foreground="Gray" TextAlignment="Center"/>
+                <TextBox Text="http://localhost:5000/chat" x:Name="ConnectionPathBox" Margin="0, 10"/>
+                <TextBlock Text="Username" FontSize="20" Foreground="Gray" TextAlignment="Center"/>
+                <TextBox x:Name="UsernameBox" Margin="0, 10"/>
+            </StackPanel>
+        </Grid>
+        <Button x:Name="EnterButton" Click="EnterButton_Click" Content="Enter" Height="30" Width="150" Margin="0, 60" VerticalAlignment="Bottom" Foreground="White" Background="#FF2281D1"/>
+    </Grid>
+</Window>
